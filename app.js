@@ -1,22 +1,21 @@
-
 /**
  * Module dependencies.
  */
 var mongoose = require('mongoose');
-var express  = require('express');
+var express = require('express');
 var connect = require('connect');
-var app      = express();
-var port     = process.env.PORT || 8080;
+var app = express();
+var port = process.env.PORT || 8080;
 
 // Configuration
 app.use(express.static(__dirname + '/public'));
 app.use(connect.logger('dev'));
-app.use(connect.json());  
+app.use(connect.json());
 app.use(connect.urlencoded());
 
 var db = mongoose.connection;
 db.on('error', console.error);
-db.once('open', function(){
+db.once('open', function() {
     // CONNECTED TO MONGODB SERVER
     console.log("Connected to mongod server");
 });
